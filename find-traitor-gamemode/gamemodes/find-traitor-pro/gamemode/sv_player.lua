@@ -1,6 +1,4 @@
--- Admin & Player Management
 
--- Admin Command zum manuellen Starten
 hook.Add("PlayerSay", "FTP_AdminCommands", function(ply, text)
     local cmd = string.lower(text)
     
@@ -15,30 +13,29 @@ hook.Add("PlayerSay", "FTP_AdminCommands", function(ply, text)
         else
             ply:ChatPrint("Nur Admins können das Spiel starten.")
         end
-        return "" -- Versteckt den Text im Chat
+        return "" 
     end
 end)
 
--- Verhalten bei Tod und Respawn
+
 function GM:PlayerDeath(victim, inflictor, attacker)
-    -- Waffen beim Tod entfernen
+
     victim:StripWeapons()
     
-    -- Nachricht wenn Traitor stirbt (Ergänzung zu init.lua)
+    
     if victim:GetNWInt("Role") == ROLE_TRAITOR then
         PrintMessage(HUD_PRINTTALK, "DER TRAITOR WURDE ELIMINIERT!")
     end
 end
 
--- Sicherstellen, dass Respawnte oder Nachzügler Innocent sind
 function GM:PlayerSpawn(ply)
-    self.BaseClass.PlayerSpawn(ply) -- Standard GMod Spawn-Logik
+    self.BaseClass.PlayerSpawn(ply) 
     
     -- Standard-Ausrüstung und Rolle
     ply:SetNWInt("Role", ROLE_INNOCENT)
-    ply:SetModel("models/player/group01/male_07.mdl") -- Dein Skin-Pfad hier
+    ply:SetModel("models/player/group01/monsterboys_pm.mdl") 
     
-    -- Wenn das Spiel läuft, kriegt er keine Waffen automatisch (muss suchen)
+    
     if GameStarted then
         ply:StripWeapons()
         ply:ChatPrint("Das Spiel läuft bereits. Du bist ein Innocent!")
