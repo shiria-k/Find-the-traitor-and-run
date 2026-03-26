@@ -3,28 +3,25 @@ AddCSLuaFile("shared.lua")
 include("shared.lua")
 
 local GameStarted = false
-local SpawnPos = Vector(0, 0, 0) -- Setze hier deine Map-Mitte/Spawn
-local SpawnRadius = 393 -- ca. 10 Meter (1 Meter ~ 39.37 Units)
+local SpawnPos = Vector(0, 0, 0) 
+local SpawnRadius = 393 
 
--- Spieler-Setup beim Joinen
 function GM:PlayerInitialSpawn(ply)
-    ply:SetModel("models/player/group01/male_01.mdl") -- Standard, Skin setzen via ID:
+    ply:SetModel("models/player/group01/monsterboys_pm.mdl") 
     ply:SetNWInt("Role", ROLE_INNOCENT)
     ply:SetNWInt("Money", 0)
     ply:SetNWInt("Wins", ply:GetPData("TotalWins", 0))
 end
 
--- Spawn Schutz & Anti-PVP
 function GM:EntityTakeDamage(target, info)
     local attacker = info:GetAttacker()
     if target:IsPlayer() or target:IsNPC() then
-        if target:GetPos():Distance(SpawnPos) < SpawnRadius then
+        if target:GetPos():Distance(SpawnPos) > spawnradius then
             info:ScaleDamage(0)
         end
     end
 end
 
--- Spielstart Logik
 function CheckStartCondition()
     if GameStarted then return end
     local playersOutside = 0
@@ -53,7 +50,7 @@ function StartGame()
     table.Shuffle(shuffled)
     
     for i, ply in ipairs(shuffled) do
-        ply:Spawn() -- Teleport zum Spawn
+        ply:Spawn() 
         if i <= traitorCount then
             ply:SetNWInt("Role", ROLE_TRAITOR)
         else
@@ -66,13 +63,13 @@ function StartGame()
     PrintMessage(HUD_PRINTTALK, "Spiel hat begonnen!")
 end
 
--- NPC Spawning (Greifen nur Innocent an)
+-- NPC Spawning 
 function SpawnNPCs()
     for i=1, 15 do
         local npc = ents.Create("npc_combine_s")
         npc:SetPos(SpawnPos + Vector(math.random(-1000,1000), math.random(-1000,1000), 100))
         npc:Spawn()
-        -- Logik für Zielsuche müsste in OnTaskFailed/Think stehen
+        
     end
 end
 
@@ -89,7 +86,7 @@ hook.Add("PlayerSay", "ShopCommand", function(ply, text)
     end
 end)
 include("sv_player.lua")
--- Dateien für den Client bereitstellen
+
 AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 AddCSLuaFile("cl_hud.lua")
@@ -97,7 +94,6 @@ AddCSLuaFile("sh_hooks.lua")
 AddCSLuaFile("modules/sh_config.lua")
 AddCSLuaFile("modules/cl_ui.lua")
 
--- Dateien auf dem Server laden
 include("shared.lua")
 include("sh_hooks.lua")
 include("sv_player.lua")
