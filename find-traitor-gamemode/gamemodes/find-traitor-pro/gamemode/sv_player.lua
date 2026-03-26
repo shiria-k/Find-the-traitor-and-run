@@ -44,3 +44,8 @@ function GM:PlayerSpawn(ply)
         ply:ChatPrint("Das Spiel läuft bereits. Du bist ein Innocent!")
     end
 end
+-- Vorher: if money >= 100 then ...
+-- Nachher (mit Config):
+if ply:GetNWInt("Money") >= FTP_Config.Shop["shotgun"].price then
+    ply:Give(FTP_Config.Shop["shotgun"].class)
+end
