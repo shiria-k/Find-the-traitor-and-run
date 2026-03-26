@@ -2,7 +2,7 @@
 
 Ein intensiver Action-Gamemode für Garry's Mod, bei dem Vertrauen Luxus ist. Überlebe als Innocent gegen NPCs und entlarve die Verräter in deinen eigenen Reihen.
 
-## 🌟 Kern-Features
+## 🌟 Kern-Features!
 
 *   **Automatisches Rollensystem:** Teilt Spieler in **Innocents** und **Traitors** ein (skaliert dynamisch: 1 Traitor bei 4 Spielern, 2 bei 10, 3 bei 20).
 *   **Spawn-Sicherheitszone:** Ein 10-Meter-Radius um den Spawn schützt Spieler und NPCs vor jeglichem PVP-Schaden.
