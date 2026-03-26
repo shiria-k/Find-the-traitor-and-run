@@ -1,4 +1,3 @@
-
 FTP_ROLES = {
     [1] = {
         name = "Innocent",
