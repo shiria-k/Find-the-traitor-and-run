@@ -12,7 +12,7 @@ Ein intensiver Action-Gamemode für Garry's Mod, bei dem Vertrauen Luxus ist. Ü
 *   **Wirtschaftssystem:** Verdiene **50$** für das Eliminieren eines Traitors. Nutze `!shop`, um eine Shotgun oder Spezial-Items zu kaufen.
 *   **Persistent Stats:** Die Anzahl deiner Rundensiege wird dauerhaft gespeichert und über deinem Kopf angezeigt.
 
-## 🎮 Spielregeln
+## 🎮 Spielregeln.
 
 
 | Rolle | Ziel |
