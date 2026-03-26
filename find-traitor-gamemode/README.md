@@ -1,41 +1,41 @@
-# 🕵️ Find Traitor Pro - Garry's Mod Gamemode
+# 🕵️ Find Traitor Pro - GMod Gamemode
 
-Ein spannender Sandbox-basierter Gamemode, bei dem Verräter unter den Unschuldigen entlarvt werden müssen, während NPCs die Map unsicher machen.
+Ein intensiver Action-Gamemode für Garry's Mod, bei dem Vertrauen Luxus ist. Überlebe als Innocent gegen NPCs und entlarve die Verräter in deinen eigenen Reihen.
 
-## 🚀 Features
+## 🌟 Kern-Features
 
-*   **Rollen-System:** Automatische Verteilung von Traitor- und Innocent-Rollen (skaliert mit Spieleranzahl).
-*   **Spawn-Schutz:** 10 Meter Sicherheitszone um den Spawn (kein PVP/NPC-Schaden).
-*   **Automatischer Start:** Das Spiel beginnt, sobald 4 Spieler den Spawn-Bereich verlassen.
-*   **NPC-Bedrohung:** 15 feindliche NPCs spawnen bei Spielbeginn und jagen gezielt die Innocents.
-*   **Waffensystem:** Alle 3 Minuten spawnen 15 Pistolen an zufälligen Orten neu.
-*   **Wirtschaftssystem:** Verdiene Geld durch das Eliminieren von Traitoren und kaufe Ausrüstung im Shop.
-*   **Statistiken:** Die Anzahl deiner Siege wird direkt über deinem Kopf für andere sichtbar angezeigt.
+*   **Automatisches Rollensystem:** Teilt Spieler in **Innocents** und **Traitors** ein (skaliert dynamisch: 1 Traitor bei 4 Spielern, 2 bei 10, 3 bei 20).
+*   **Spawn-Sicherheitszone:** Ein 10-Meter-Radius um den Spawn schützt Spieler und NPCs vor jeglichem PVP-Schaden.
+*   **Dynamischer Spielstart:** Die Runde beginnt automatisch, sobald sich mindestens 4 Spieler außerhalb der Schutzzone befinden.
+*   **NPC-Invasion:** Bei Spielbeginn spawnen 15 feindliche NPCs (Skin: 1720614156), die gezielt Jagd auf die Innocents machen.
+*   **Waffen-Rotation:** Alle 15 Minuten spawnen 15 Pistolen an zufälligen Orten auf der Map neu.
+*   **Wirtschaftssystem:** Verdiene **50$** für das Eliminieren eines Traitors. Nutze `!shop`, um eine Shotgun oder Spezial-Items zu kaufen.
+*   **Persistent Stats:** Die Anzahl deiner Rundensiege wird dauerhaft gespeichert und über deinem Kopf angezeigt.
 
 ## 🎮 Spielregeln
 
-1.  **Innocents:** Überlebe die NPCs und finde heraus, wer der Traitor ist. Du gewinnst, wenn alle Traitor tot sind oder alle NPCs besiegt wurden.
-2.  **Traitor:** Eliminiere alle Innocents, ohne entlarvt zu werden. Nutze die NPCs als Ablenkung!
-3.  **Respawn:** Innocents respawnen sofort, verlieren aber ihre Waffen.
 
-## 🛠 Installation
+| Rolle | Ziel |
+| :--- | :--- |
+| **Innocent** | Überlebe und eliminiere den Traitor oder alle NPCs. |
+| **Traitor** | Eliminiere alle Innocents. Nutze die NPCs als Ablenkung! |
 
-1. Lade den Ordner `find-traitor-pro` in dein GMod `gamemodes/` Verzeichnis.
-2. Stelle sicher, dass die benötigten Addons (Skins) abonniert sind.
-3. Setze in deiner Server-Config oder per Konsole: `gamemode find-traitor-pro`.
+*   **Siegbedingung:** Innocents gewinnen, wenn der Traitor stirbt oder alle 15 NPCs eliminiert wurden.
+*   **Respawn:** Gekillte Innocents respawnen sofort, verlieren aber ihre aktuelle Bewaffnung.
 
-## ⌨️ Commands
+## 🛠️ Installation & Commands
 
+1. Kopiere den Ordner `find-traitor-pro` in dein `garrysmod/gamemodes/` Verzeichnis.
+2. Starte deinen Server mit dem Parameter `-gamemode find-traitor-pro`.
 
-| Command | Beschreibung | Berechtigung |
-| :--- | :--- | :--- |
-| `!shop` | Öffnet das Kaufmenü (Shotgun: 100$) | Alle |
-| `!start` | Startet die Runde sofort manuell | Admin |
+### Chat-Befehle
+*   `!shop` – Öffnet den Ausrüstungsshop (Shotgun: 100$).
+*   `!start` – (Admin only) Erzwingt einen sofortigen Rundenstart.
 
 ## ⚙️ Konfiguration
-
-Die wichtigsten Einstellungen (Preise, Skin-Modelle, Timer) findest du in der Datei:
+Alle wichtigen Werte wie Skin-Pfade, Preise und Radien findest du in:
 `gamemodes/find-traitor-pro/gamemode/modules/sh_config.lua`
 
 ---
-*Erstellt für die GMod Community. Lizenz: MIT.*
+**Lizenz:** MIT  
+**Entwickelt für:** Garry's Mod Community
