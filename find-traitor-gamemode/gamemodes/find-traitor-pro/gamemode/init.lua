@@ -133,3 +133,42 @@ hook.Add("OnNPCKilled", "FTP_NPCDeathCheck", function(victim, attacker, inflicto
     end)
 end)
 
+hook.Add("PlayerSay", "FTP_AdvancedShop", function(ply, text)
+    local args = string.Explode(" ", string.lower(text))
+    
+    if args[1] == "!shop" then
+        -- Wenn nur "!shop" eingegeben wird, zeige verfügbare Items
+        if #args == 1 then
+            ply:ChatPrint("Verfügbare Items: !shop shotgun (100$), !shop traitor_pistol (150$)")
+            return ""
+        end
+
+        local itemKey = args[2]
+        local itemData = FTP_Config.Shop[itemKey]
+
+        if itemData then
+            
+            if itemData.traitorOnly and ply:GetNWInt("Role") != 2 then
+                ply:ChatPrint("Dieses Item ist nur für Verräter!")
+                return ""
+            end
+
+            local money = ply:GetNWInt("Money", 0)
+            if money >= itemData.price then
+                ply:SetNWInt("Money", money - itemData.price)
+                ply:Give(itemData.class)
+                ply:ChatPrint(itemData.name .. " gekauft!")
+                
+                net.Start("FTP_ShopFeedback")
+                    net.WriteString(itemData.name)
+                    net.WriteBool(true)
+                net.Send(ply)
+            else
+                ply:ChatPrint("Zu wenig Geld! Du brauchst $" .. itemData.price)
+            end
+        else
+            ply:ChatPrint("Dieses Item existiert nicht im Shop.")
+        end
+        return ""
+    end
+end)
