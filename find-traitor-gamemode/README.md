@@ -1,4 +1,4 @@
-# 🕵️ Find Traitor Pro - GMod Gamemode
+# 🕵️ Find Traitor Pro - GMod Gamemode!
 
 Ein intensiver Action-Gamemode für Garry's Mod, bei dem Vertrauen Luxus ist. Überlebe als Innocent gegen NPCs und entlarve die Verräter in deinen eigenen Reihen.
 
