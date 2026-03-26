@@ -1,33 +1,26 @@
 
 FTP_Config = {}
 
--- Spieler-Einstellungen
-FTP_Config.PlayerModel = "models/player/group01/male_07.mdl" -- Ersetze durch Pfad von Skin 439849859
-FTP_Config.StartMoney = 0
-FTP_Config.TraitorKillReward = 50
+FTP_Config.PlayerModel = "models/player/group01/monsterboys_pm.mdl" 
+FTP_Config.NPCModel    = "models/tm_leet_variantA.mdl"
 
--- Spiel-Logik
-FTP_Config.MinPlayersToStart = 4
-FTP_Config.SpawnProtectRadius = 393 -- 10 Meter (in Source Units)
-FTP_Config.WeaponResetTime = 180    -- 3 Minuten (in Sekunden)
+FTP_Config.MinPlayersToStart = 4      
+FTP_Config.SpawnRadius       = 393    
+FTP_Config.WeaponResetTime   = 180    
+FTP_Config.NPCCount          = 15     
 
--- NPC-Einstellungen
-FTP_Config.NPCModel = "models/combine_super_soldier.mdl" -- Ersetze durch Pfad von Skin 1720614156
-FTP_Config.NPCCount = 15
-
--- Shop-Preise
-FTP_Config.Shop = {
-    ["shotgun"] = { 
-        class = "weapon_shotgun", 
-        price = 100 
-    }
-}
-
--- Traitor-Verteilung (Spieleranzahl = Traitor-Anzahl)
 FTP_Config.TraitorScales = {
-    [4] = 1,
+    [20] = 3,
     [10] = 2,
-    [20] = 3
+    [4]  = 1
 }
 
-print("[FTP] Config wurde geladen!")
+FTP_Config.StartMoney        = 0
+FTP_Config.TraitorKillReward = 50
+FTP_Config.ShopPriceShotgun  = 100
+
+FTP_Config.MsgRoundStart = "DIE RUNDE HAT BEGONNEN! FINDE DEN TRAITOR!"
+FTP_Config.MsgTraitorWin = "DER TRAITOR HAT GEWONNEN!"
+FTP_Config.MsgInnoWin    = "DIE INNOCENTS HABEN GEWONNEN!"
+
+print("[FTP] Konfiguration erfolgreich geladen!")
