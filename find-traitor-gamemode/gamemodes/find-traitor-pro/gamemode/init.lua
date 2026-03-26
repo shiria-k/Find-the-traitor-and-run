@@ -88,3 +88,4 @@ hook.Add("PlayerSay", "ShopCommand", function(ply, text)
         return ""
     end
 end)
+include("sv_player.lua")
