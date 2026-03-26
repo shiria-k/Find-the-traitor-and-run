@@ -24,3 +24,17 @@ FTP_Config.MsgTraitorWin = "DER TRAITOR HAT GEWONNEN!"
 FTP_Config.MsgInnoWin    = "DIE INNOCENTS HABEN GEWONNEN!"
 
 print("[FTP] Konfiguration erfolgreich geladen!")
+
+FTP_Config.Shop = {
+    ["shotgun"] = { 
+        class = "weapon_shotgun", 
+        name = "Schrotflinte",
+        price = 100 
+    },
+    ["traitor_pistol"] = { 
+        class = "weapon_my_swep", 
+        name = "Verräter Pistole",
+        price = 150,
+        traitorOnly = true
+    }
+}
