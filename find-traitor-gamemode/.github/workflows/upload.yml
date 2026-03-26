@@ -1,5 +1,5 @@
 name: Steam Workshop Upload
-on: [push] # Startet, sobald du am Handy etwas speicherst
+on: [push] # Startet, sobald du am Handy etwas speicherst.
 
 jobs:
   steam-deploy:
