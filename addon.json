@@ -1,0 +1,6 @@
+{
+	"title": "Find the Traitor and run",
+	"type": "gamemode",
+	"tags": ["fun", "roleplay"],
+	"ignore": [".git", "README.md"]
+}
