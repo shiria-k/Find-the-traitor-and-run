@@ -1,0 +1,17 @@
+name: Steam Upload
+on: [push] # Reagiert auf JEDE Änderung
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: weilbyte/steam-workshop-upload@v1
+        with:
+          appid: 4000
+          itemid: 0
+          path: '.'
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
+
