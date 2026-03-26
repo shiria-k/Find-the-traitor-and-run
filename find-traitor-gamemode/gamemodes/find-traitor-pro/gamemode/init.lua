@@ -89,3 +89,17 @@ hook.Add("PlayerSay", "ShopCommand", function(ply, text)
     end
 end)
 include("sv_player.lua")
+-- Dateien für den Client bereitstellen
+AddCSLuaFile("cl_init.lua")
+AddCSLuaFile("shared.lua")
+AddCSLuaFile("cl_hud.lua")
+AddCSLuaFile("sh_hooks.lua")
+AddCSLuaFile("modules/sh_config.lua")
+AddCSLuaFile("modules/cl_ui.lua")
+
+-- Dateien auf dem Server laden
+include("shared.lua")
+include("sh_hooks.lua")
+include("sv_player.lua")
+include("modules/sh_config.lua")
+include("modules/sv_network.lua")
