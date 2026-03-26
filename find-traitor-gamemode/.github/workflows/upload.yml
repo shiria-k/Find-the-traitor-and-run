@@ -1,0 +1,17 @@
+name: Steam Workshop Upload
+on: [push] # Startet, sobald du am Handy etwas speicherst
+
+jobs:
+  steam-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Upload to Steam
+        uses: weilbyte/steam-workshop-upload@v1
+        with:
+          appid: 4000
+          itemid: 3687480264
+          path: 'DEIN_ORDNER_NAME' # Der Ordner mit deinem Mod
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
