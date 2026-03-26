@@ -1,5 +1,5 @@
 name: Steam Upload
-on: [push] # Reagiert auf JEDE Änderung.
+on: [push] # Reagiert auf JEDE Änderung
 
 jobs:
   deploy:
