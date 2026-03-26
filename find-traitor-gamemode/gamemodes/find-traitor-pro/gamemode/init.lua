@@ -99,3 +99,37 @@ include("sh_hooks.lua")
 include("sv_player.lua")
 include("modules/sh_config.lua")
 include("modules/sv_network.lua")
+
+function CheckNPCVictory()
+    if not GameStarted then return end
+
+    local activeNPCs = ents.FindByClass("npc_combine_s")
+    local count = 0
+    
+    for _, npc in ipairs(activeNPCs) do
+        if IsValid(npc) and npc:Health() > 0 then
+            count = count + 1
+        end
+    end
+
+    if count == 0 then
+        local msg = "ALLE NPCs BESIEGT! DIE INNOCENTS GEWINNEN!"
+        PrintMessage(HUD_PRINTTALK, msg)
+        
+        for _, ply in ipairs(player.GetAll()) do
+            if ply:GetNWInt("Role") == ROLE_INNOCENT and ply:Alive() then
+                ply:SetNWInt("Money", ply:GetNWInt("Money") + 25)
+            end
+        end
+
+        EndFTPGame("Innocents") 
+    end
+end
+
+hook.Add("OnNPCKilled", "FTP_NPCDeathCheck", function(victim, attacker, inflictor)
+    
+    timer.Simple(1, function()
+        CheckNPCVictory()
+    end)
+end)
+
