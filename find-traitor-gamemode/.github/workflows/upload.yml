@@ -10,7 +10,7 @@ jobs:
         uses: weilbyte/steam-workshop-upload@v1
         with:
           appid: 4000
-          itemid: 3687480264
+          itemid: 0
           path: '.' 
         env:
           STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
