@@ -46,3 +46,35 @@ end
 if ply:GetNWInt("Money") >= FTP_Config.Shop["shotgun"].price then
     ply:Give(FTP_Config.Shop["shotgun"].class)
 end
+util.AddNetworkString("FT_RoundState")
+
+local roundActive = false
+local roundTime = 60
+
+function FT_StartRound()
+    if #player.GetAll() < 2 then return end
+
+    roundActive = true
+    print("[FT] Round started")
+
+    SelectTraitor()
+
+    timer.Create("FT_RoundTimer", roundTime, 1, function()
+        FT_EndRound("Innocents Win! Time ran out")
+    end)
+end
+
+function FT_EndRound(reason)
+    if not roundActive then return end
+
+    roundActive = false
+    print("[FT] Round ended: " .. reason)
+
+    timer.Remove("FT_RoundTimer")
+
+    for _, ply in ipairs(player.GetAll()) do
+        ply:SetNWBool("FT_IsTraitor", false)
+    end
+
+    timer.Simple(5, FT_StartRound)
+end
