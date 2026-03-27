@@ -22,3 +22,17 @@ function FTTR.StartRound()
 
     PrintMessage(HUD_PRINTTALK, "[FTTR] Runde gestartet!")
 end
+function FTTR.AssignRoles()
+    local players = player.GetAll()
+    local traitorCount = FTTR.GetTraitorCount(#players)
+
+    for _, ply in ipairs(players) do
+        ply.FTTR_Role = FTTR.Roles.INNOCENT
+    end
+
+    for i = 1, traitorCount do
+        local ply = table.Random(players)
+        ply.FTTR_Role = FTTR.Roles.TRAITOR
+        table.RemoveByValue(players, ply)
+    end
+end
