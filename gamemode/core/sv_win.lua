@@ -23,3 +23,12 @@ function FTTR.EndRound()
         ent:Remove()
     end
 end
+hook.Add("OnNPCKilled", "FTTR_NPCWinCheck", function(npc, killer, weapon)
+    if not FTTR.RoundActive then return end
+
+    local npcsAlive = #ents.FindByClass("npc_citizen")
+    if npcsAlive == 0 then
+        PrintMessage(HUD_PRINTTALK, "Traitor hat gewonnen! Alle NPCs sind tot.")
+        FTTR.EndRound()
+    end
+end)
