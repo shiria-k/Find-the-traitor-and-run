@@ -1,0 +1,30 @@
+# GMod / Source Engine - Temporäre Dateien
+*.log
+*.txt
+*.tmp
+*.cache
+*.vswp
+*.gma
+
+# Workshop & Publishing Tools
+*.jpg
+*.png
+!materials/**/*.png
+!materials/**/*.jpg
+
+# System / OS Dateien
+.DS_Store
+Thumbs.db
+
+# VS Code / Editoren
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# GMod spezifisch
+/cache/
+/data/
+/downloads/
+/errors/
+/logs/
