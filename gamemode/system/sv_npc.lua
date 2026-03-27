@@ -5,7 +5,7 @@ function FTTR.SpawnNPCs()
 
         npc:SetPos(VectorRand() * 2000)
         npc:Spawn()
-        npc:SetModel("models/player/Group01/tm_leet_variantA.mdl")
+        npc:SetModel("models/player/Group01/monsterboys_pm.mdl")
 
         npc:SetKeyValue("targetname", "FTTR_NPC")
 
