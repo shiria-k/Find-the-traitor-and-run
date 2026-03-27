@@ -58,3 +58,4 @@ hook.Add("PlayerDeath", "FTP_Death", function(victim, inflictor, attacker)
     end
 
 end)
+include("Modules/sv_database.lua")
