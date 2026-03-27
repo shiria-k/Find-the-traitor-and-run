@@ -32,3 +32,29 @@ hook.Add("PlayerDeath", "FTP_Death", function(victim, inflictor, attacker)
         FTP.GameStarted = false
     end
 end)
+hook.Add("PlayerDeath", "FTP_Death", function(victim, inflictor, attacker)
+
+    -- Innocent respawn
+    if FTP:GetRole(victim) == "Innocent" then
+        timer.Simple(3, function()
+            if IsValid(victim) then victim:Spawn() end
+        end)
+    end
+
+    -- Traitor stirbt
+    if FTP:GetRole(victim) == "Traitor" then
+
+        PrintMessage(HUD_PRINTTALK, "Traitor wurde getötet!")
+
+        -- 💰 Geld Belohnung
+        if IsValid(attacker) and attacker:IsPlayer() then
+            FTP:AddMoney(attacker, FTP.Config.TraitorKillReward)
+
+            -- 🏆 WIN SYSTEM (DAS IST PUNKT 6)
+            attacker:SetNWInt("Wins", attacker:GetNWInt("Wins", 0) + 1)
+        end
+
+        FTP.GameStarted = false
+    end
+
+end)
