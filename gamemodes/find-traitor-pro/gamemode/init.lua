@@ -85,3 +85,4 @@ hook.Add("Think", "AutoStart", function()
         FTP:StartGame()
     end
 end)
+FTP:SetupNPC(npc)
