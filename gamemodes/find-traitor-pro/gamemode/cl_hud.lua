@@ -36,3 +36,24 @@ local hide = {
 hook.Add("HUDShouldDraw", "FTP_HideStuff", function(name)
 	if (hide[name]) then return false end
 end)
+hook.Add("HUDPaint", "FT_HUD", function()
+    local ply = LocalPlayer()
+    if not IsValid(ply) then return end
+
+    local text = "INNOCENT"
+    local color = Color(0, 255, 0)
+
+    if ply:GetNWBool("FT_IsTraitor") then
+        text = "TRAITOR"
+        color = Color(255, 0, 0)
+    end
+
+    draw.SimpleText(
+        text,
+        "Trebuchet24",
+        ScrW()/2,
+        50,
+        color,
+        TEXT_ALIGN_CENTER
+    )
+end)
