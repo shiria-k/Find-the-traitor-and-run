@@ -86,3 +86,4 @@ hook.Add("Think", "AutoStart", function()
     end
 end)
 FTP:SetupNPC(npc)
+include("Modules/sv_leaderboard.lua")
