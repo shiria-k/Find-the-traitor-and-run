@@ -78,3 +78,41 @@ function FT_EndRound(reason)
 
     timer.Simple(5, FT_StartRound)
 end
+function SelectTraitor()
+    local players = player.GetAll()
+    if #players < 2 then return end
+
+    local traitor = table.Random(players)
+
+    for _, ply in ipairs(players) do
+        ply:SetNWBool("FT_IsTraitor", false)
+    end
+
+    traitor:SetNWBool("FT_IsTraitor", true)
+
+    print("[FT] Traitor: " .. traitor:Nick())
+end
+
+hook.Add("PlayerDeath", "FT_CheckWin", function(victim, inflictor, attacker)
+    if not IsValid(victim) then return end
+
+    if victim:GetNWBool("FT_IsTraitor") then
+        FT_EndRound("Innocents Win! Traitor is dead")
+    else
+        local alive = {}
+
+        for _, ply in ipairs(player.GetAll()) do
+            if ply:Alive() and not ply:GetNWBool("FT_IsTraitor") then
+                table.insert(alive, ply)
+            end
+        end
+
+        if #alive == 0 then
+            FT_EndRound("Traitor Wins!")
+        end
+    end
+end)
+
+hook.Add("InitPostEntity", "FT_AutoStart", function()
+    timer.Simple(5, FT_StartRound)
+end)
